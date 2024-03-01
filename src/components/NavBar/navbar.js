@@ -49,13 +49,13 @@ const Navbar = () => {
                     </div>
                     
                     {/* Wrap the button with Link and set to="contact" */}
-                    <Link to="contact" className="desktopMenuBtnLink" smooth={true} offset={-80}>
-                        <button className="desktopMenuBtn">
-                            Resume
-                        </button>
-                    </Link>
-                </>
-            )}
+                    <a href="https://drive.google.com/file/d/1Cun0_kn8VgSM13-HgbMvhx55L423u6mZ/view?usp=sharing" target="_blank" className="desktopMenuBtnLink">
+            <button className="desktopMenuBtn">
+                Resume
+            </button>
+        </a>
+    </>
+)}
 
             {/* Burger menu for mobile */}
             {isMobile && (

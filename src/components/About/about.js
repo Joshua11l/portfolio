@@ -5,9 +5,23 @@ import FrameworkDesign from "../../assets/framework.png";
 import Project1Thumbnail from "../../assets/project1-thumbnail.png";
 import Project2Thumbnail from "../../assets/project2-thumbnail.png";
 import GithubIcon from "../../assets/github.png";
-import WorkIcon from "../../assets/work-icon.png";
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-scroll'; // Import Link from react-scroll
+import { motion } from "framer-motion";
+
+const workExperienceVariants = {
+  hidden: { opacity: 0, y: 50 }, // Start 50 pixels below the final position and invisible
+  visible: {
+    opacity: 1,
+    y: 0, // Move to the final position
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+    },
+  },
+};
+
 
 const About = () => {
   const [name, setName] = useState("");
@@ -36,7 +50,7 @@ const About = () => {
 
   const workExperiences = [
     {
-      title: "Project Lead at Wings of Angels Transportation Service",
+      title: "Divine Messenger",
       date: "August 2023 - Present",
       description: [
         "Contracted by a funeral home transportation service to develop a digital solution for revolutionizing their operational workflow and database management.",
@@ -60,43 +74,43 @@ const About = () => {
     event.preventDefault();
     console.log({ name, email, message });
   };
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
-  const changeProject = (newIndex) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentProjectIndex(newIndex);
-      setIsAnimating(false);
-    }, 500);
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextProject();
+    } else if (touchStart - touchEnd < -75) {
+      prevProject();
+    }
+    // Reset
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   const nextProject = () => {
-    const newIndex = (currentProjectIndex + 1) % projects.length;
-    changeProject(newIndex);
+    setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const prevProject = () => {
-    const newIndex =
-      currentProjectIndex === 0 ? projects.length - 1 : currentProjectIndex - 1;
-    changeProject(newIndex);
+    setCurrentProjectIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
   };
+
   const changeWork = (newIndex) => {
-    if (isAnimating) return;
+    if (isAnimating || currentWorkIndex === newIndex) return;
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentWorkIndex(newIndex);
       setIsAnimating(false);
-    }, 500);
-  };
-
-  const nextWork = () => {
-    const newIndex = (currentWorkIndex + 1) % workExperiences.length;
-    changeWork(newIndex);
-  };
-
-  const prevWork = () => {
-    const newIndex = currentWorkIndex === 0 ? workExperiences.length - 1 : currentWorkIndex - 1;
-    changeWork(newIndex);
+    }, 500); // Adjust time as necessary for your animation
   };
 
   return (
@@ -112,7 +126,7 @@ const About = () => {
         onVisibilityChange={({ isVisible }) => setIsAnimating(isVisible)}
       >
         <div className="aboutSection">
-          <span className="aboutTitle">About Me:</span>
+          <span className="aboutTitle">About Me</span>
           <span className="aboutDesc">
             Hello! I'm Joshua Lopez, a sophomore pursuing a Computer Science
             degree at California State University, Fullerton. My fascination
@@ -170,51 +184,35 @@ const About = () => {
         </div>
       </Fade>
 
-      <Fade
-        cascade
-        triggerOnce={false}
-        damping={0.5}
-        visible={isVisible}
-        onVisibilityChange={({ isVisible }) => setIsAnimating(isVisible)}
+      <Fade cascade triggerOnce={false} damping={0.5} visible={isVisible}>
+  <div className="projectsSection" id="projects">
+    <span className="projectsTitle">My Projects</span>
+    <div className="sliderContainer">
+      {/* Swiper buttons for manual navigation */}
+      <button className="slideButton prev" onClick={prevProject} disabled={isAnimating}>&lt;</button>
+      <div
+        className="projectsWrapper"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        style={{ transform: `translateX(-${currentProjectIndex * 100}%)` }}
       >
-        <div className="projectsSection" id="projects">
-          <span className="projectsTitle">My Projects:</span>
-          <div className="sliderContainer">
-            <button
-              className="slideButton prev"
-              onClick={prevProject}
-              disabled={isAnimating}
-            >
-              &lt;
-            </button>
-            <div
-              className="projectsWrapper"
-              style={{ transform: `translateX(-${currentProjectIndex * 100}%)` }}
-            >
-              {projects.map((project, index) => (
-                <div className="project" key={index}>
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="projectImg"
-                  />
-                  <div className="projectText">
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                  </div>
-                </div>
-              ))}
+        {projects.map((project, index) => (
+          <div className="project" key={index}>
+            <img src={project.thumbnail} alt={project.title} className="projectImg" />
+            <div className="projectText">
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
             </div>
-            <button
-              className="slideButton next"
-              onClick={nextProject}
-              disabled={isAnimating}
-            >
-              &gt;
-            </button>
           </div>
-        </div>
-      </Fade>
+        ))}
+      </div>
+      <button className="slideButton next" onClick={nextProject} disabled={isAnimating}>&gt;</button>
+    </div>
+  </div>
+</Fade>
+
+
 
       <Fade
         cascade
@@ -236,30 +234,40 @@ const About = () => {
         </div>
       </Fade>
 
-      <Fade cascade triggerOnce={false} damping={0.5} onVisibilityChange={({ isVisible }) => setIsAnimating(isVisible)}>
+      <Fade cascade triggerOnce={false} damping={0.5} visible={isVisible} onVisibilityChange={({ isVisible }) => setIsAnimating(isVisible)}>
         <div className="workExperienceSection" id="experience">
-          <span className="workExperienceTitle">Work Experience:</span>
-          <div className="sliderContainer">
-            <button className="slideButton prev" onClick={prevWork} disabled={isAnimating}>&lt;</button>
-            <div className="workExperienceWrapper" style={{ transform: `translateX(-${currentWorkIndex * 100}%)` }}>
-              {workExperiences.map((experience, index) => (
-                <div className="workExperienceContent" key={index}>
-                  <div className="workDescription">
-                    <h3>{experience.title}</h3>
-                    <p>{experience.date}</p>
-                    <ul>
-                      {experience.description.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button className="slideButton next" onClick={nextWork} disabled={isAnimating}>&gt;</button>
+          <span className="workExperienceTitle">Work Experience</span>
+          <div className="workExperienceTabs">
+            {workExperiences.map((experience, index) => (
+              <button
+                key={index}
+                className={`tabButton ${currentWorkIndex === index ? "active" : ""}`}
+                onClick={() => changeWork(index)}
+              >
+                {experience.title}
+              </button>
+            ))}
           </div>
+          <motion.div
+            className="workExperienceContent"
+            initial="hidden"
+            animate="visible"
+            variants={workExperienceVariants}
+            key={currentWorkIndex} // Key change triggers animation
+          >
+            <div className="workDescription">
+              <h3>{workExperiences[currentWorkIndex].title}</h3>
+              <p>{workExperiences[currentWorkIndex].date}</p>
+              <ul>
+                {workExperiences[currentWorkIndex].description.map((point, idx) => (
+                  <li key={idx}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </Fade>
+
 
       <Fade
         cascade
