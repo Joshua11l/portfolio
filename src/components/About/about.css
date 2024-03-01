@@ -1,0 +1,509 @@
+#about {
+    overflow: hidden;
+    width: 100%;
+    max-width: 65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20rem;
+}
+.aboutTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: block; /* Ensure the title takes full width */
+}
+
+
+
+
+.aboutTitle, .projectsTitle, .workExperienceTitle, .contactSectionTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+.aboutDesc, .aboutBarText, .projectText > p, .workDescription {
+    font-weight: 300;
+}
+
+
+.aboutDesc {
+    font-size: 1.2rem;
+    max-width: 51rem;
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
+}
+
+
+@media screen and (max-width: 480px) {
+    .aboutTitle, .aboutDesc {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        max-width: 90%;
+    }
+}
+
+
+/* About section styles */
+.aboutBar {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center the container horizontally */
+    margin: 1rem auto; /* Center the container vertically */
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    background: rgb(114, 165, 212);
+    max-width: 80%;
+}
+
+
+.aboutBarImg {
+    height: 5rem;
+    width: 6rem;
+    object-fit: cover;
+    margin-right: 1rem; /* Adjust margin if needed */
+}
+
+
+.aboutBarText {
+    font-size: 1rem;
+    text-align: left; /* Keep the text left-aligned */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.projectsSection {
+    width: 100%;
+    margin-top: 5rem;
+    position: relative;
+    padding-top: 20rem; /* Ensures that .prev and .next are positioned relative to this container */
+}
+
+
+.sliderContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hides the overflow of the projectsWrapper */
+    position: relative;
+    background-color: black;
+    border: solid 2px rgb(114, 165, 212); /* Needed for correct positioning of navigation buttons */
+}
+
+
+.projectsWrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
+}
+
+
+.project {
+    flex: 0 0 100%; /* Each project will take up 100% of the width of the slider container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    box-sizing: border-box; /* Includes padding in the width */
+}
+
+
+.projectImg {
+    width: 50%;
+    max-width: 100%; /* Ensures image does not exceed its container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 0.5rem;
+}
+
+
+.slideButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 10px; /* Maintains circular shape */
+    font-size: 30px;
+    z-index: 20; /* Consistent z-index across all instances */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: -10px;
+   
+}
+
+
+/* Adjust the positioning of the prev and next buttons */
+.prev, .next {
+    top: 50%; /* Ensures vertical center alignment */
+    transform: translateY(-50%);
+    z-index: 21; /* Slightly higher to ensure visibility over the slider but consistent with other elements */
+}
+
+
+.prev {
+    left: 20px; /* Adjusted for better visibility */
+}
+
+
+.next {
+    right: 20px; /* Adjusted for better visibility */
+}
+
+
+/* Enhanced hover effect for better user interaction feedback */
+.slideButton:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+    border-color: rgb(114, 165, 212); /* Optional: Changes border color on hover */
+}
+
+
+/* Ensures buttons are not overly opaque when disabled */
+.slideButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+
+.githubLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    border: solid 3px black ;
+}
+
+
+.githubLink:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+}
+
+
+.githubIcon {
+    height: 3rem;
+    width: 3.5rem;
+    margin-right: 0.5rem;
+}
+
+
+/* Work Experience section styles */
+.workExperienceSection {
+    margin-top: 10rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20rem;
+}
+
+
+.workExperienceContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 15rem;
+    width: 100%;
+}
+
+
+.workIcon {
+    height: 5rem;
+    width: 5rem;
+    margin-right: 1rem;
+}
+
+
+.workDescription {
+    text-align: left;
+    width: calc(100% - 5rem);
+    color: #f8f8f8;
+    width: 80%;
+}
+
+
+.workDescription ul {
+    list-style: inside;
+    padding-left: 0;
+}
+
+
+/* Contact section styles */
+/* Contact section styles */
+.contactSection {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    width: 100rem;
+    height: 40rem;
+    max-width: 65rem; /* Adjusted to match previous styling */
+    border: solid 4px rgb(114, 165, 212);
+    margin-bottom: 10rem;
+    box-sizing: border-box;
+    margin-top: 30rem;
+    background-color: black;
+}
+
+
+.contactContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+.contactText {
+    width: 50%; /* Adjust based on your design preference */
+}
+
+
+.contactSectionTitle {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: -1.3rem;
+}
+
+
+.contactDescription {
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-top: 5rem;
+}
+
+
+.contactForm {
+    padding: 20px;
+    width: 50%; /* Adjust based on your design preference */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contactInput, .contactTextarea {
+    margin-bottom: 1rem;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+    width: 100%;
+}
+
+
+.contactTextarea {
+    height: 150px;
+    resize: vertical;
+}
+
+
+.submitContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+.contactButton {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+
+.contactButton:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .contactContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    .contactText, .contactForm {
+        width: 100%;
+    }
+
+
+    .contactSectionTitle, .contactDescription {
+        margin-bottom: 1rem;
+    }
+}
+
+
+
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .contactContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    .contactText, .contactForm {
+        width: 100%;
+    }
+
+
+    .contactSectionTitle, .contactDescription {
+        margin-bottom: 1rem;
+    }
+}
+.sliderContainer {
+    width: 100%;
+    overflow: hidden; /* Ensures content outside this container is not shown */
+}
+
+
+/* Work Experience Wrapper */
+.workExperienceWrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
+}
+
+
+/* Work Experience Content - ensure it takes full width for the slider */
+.workExperienceContent {
+    min-width: 100%; /* Makes each work experience entry the full width of the container */
+    box-sizing: border-box; /* Includes padding and borders in the element's total width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Aligns the text to the left within each entry */
+    padding: 1.5rem; /* Adjust padding as necessary */
+    margin: 0; /* Resets any default margin */
+}
+
+
+/* You may need to adjust your button styles to ensure they are positioned correctly */
+.slideButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 0.2rem .8rem;
+    font-size: 30px;
+    z-index: 20;
+}
+
+
+.slideButton.prev {
+    left: 10px; /* Move it further to the left if needed */
+    transform: translateY(-50%); /* Keep the button vertically centered */
+}
+
+
+.slideButton.next {
+    right: 30px; /* Move it further to the right if needed */
+    transform: translateY(-50%); /* Keep the button vertically centered */
+}
+
+
+/* Ensure that the previous and next buttons are correctly positioned on small screens */
+@media screen and (max-width: 768px) {
+    .slideButton.prev {
+        left: 10px; /* Adjust as needed */
+    }
+
+
+    .slideButton.next {
+        right: 10px; /* Adjust as needed */
+    }
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .contactContent {
+        flex-direction: column;
+        text-align: center;
+       
+    }
+
+
+    .contactText, .contactForm {
+        width: 100%;
+    }
+
+
+    .contactSectionTitle, .contactDescription {
+        margin-bottom: 1rem;
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .project {
+        margin: 0 auto;
+        flex-basis: 90%;
+    }
+    .projectsTitle, .workExperienceTitle {
+        font-size: 2rem;
+        margin-bottom: -1.5rem;
+    }
+    .workExperienceContent {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .workIcon {
+        margin-bottom: 1rem;
+    }
+    .githubLink {
+        padding: 0.5rem 1rem;
+        margin: 1rem auto;
+        max-width: 200px;
+    }
+}
+
+
+
+
+

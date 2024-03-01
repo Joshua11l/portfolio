@@ -1,0 +1,176 @@
+.navbar {
+    background: rgb(30, 30, 30);
+    height: 5rem;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Align items horizontally center */
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.logo {
+    object-fit: cover;
+    height: 6rem;
+    width: 5rem;
+    
+}
+
+.desktopMenuListItem {
+    margin: 1rem;
+    cursor: pointer;
+   
+}
+
+.desktopMenuListItem:hover {
+    color: rgb(114, 165, 212);
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid rgb(114, 165, 212);
+}
+
+.desktopMenuBtn {
+    background: white;
+    color: black;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center text if no image */
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem; /* Adjust font size as needed */
+    margin: 0 1rem; /* Ensure some spacing around the button */
+}
+
+.desktopMenuBtn:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+}
+
+/* Removed the .desktopMenuImg styles since the image is no longer used */
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        font-size: small;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+       
+        justify-content: flex-end; /* Align items to the right */
+        
+        background-color: transparent;
+         /* Add padding to the right to separate from screen edge */
+    }
+
+    
+   
+
+    .burger-menu-icon {
+        display: block; /* Show the burger menu icon on mobile */
+        width: 2rem; /* Adjust size if necessary */
+        height: 2rem; /* Adjust size if necessary */
+        background-image: url('../NavBar/logo.png'); /* Add your burger menu icon */
+        background-size: cover;
+        cursor: pointer;
+        margin-right: 1rem; /* Adjust the margin-right value to move the icon to the right */
+    }
+
+    .desktopMenuListItem {
+        /* Adjust the styles for your menu items for mobile devices if necessary */
+        font-size: 0.8rem; /* Smaller font size for menu items */
+        margin: 0.5rem; /* Adjust margin as needed */
+        /* Add any other styles you need for the menu items on mobile */
+    }
+
+    .desktopMenuBtn {
+        /* Refine the button styles for mobile */
+        padding: 5px 5px; /* Adjust padding for a larger, more clickable area */
+        font-size: 0.9rem; /* Adjust font size for better readability */
+        margin-top: 0.5rem; /* Adjust margin-top as needed for mobile layout */
+        margin-bottom: 0.5rem; /* Adjust margin-bottom as needed for mobile layout */
+        width: auto; /* Auto width to fit content */
+        border: 1px solid #ccc;
+        margin-right: 2.4rem;
+    }
+    
+    .navbar.menu-open .bm-menu-wrap {
+        transform: translateY(0%);
+        transition: transform 0.3s ease;
+    }
+    
+    .bm-menu-wrap {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .burger-menu-toggle {
+        z-index: 5;
+        position: relative; /* Adjust based on your layout */
+    }
+    /* Ensure the burger menu's container covers the full screen height and slides in from the right */
+.bm-menu-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh; /* Full viewport height */
+    width: 300px; /* Adjust this width to your preference */
+    transform: translateX(100%); /* Start off-screen to the right */
+    transition: transform 0.3s ease;
+    background-color: transparent /* Your desired background color */
+}
+/* Apply a consistent background color to the menu container and its children */
+.bm-menu-wrap, .bm-menu, .bm-item-list, .bm-items, .bm-overlay {
+    background-color: rgb(30, 30, 30);
+    font-size: 1rem;
+    line-height: 3.5rem;
+    font-weight: 600;
+    color: white;
+     /* Ensure this is the black color you want */
+}
+
+
+/* If the menu or overlay uses a different class, set the background color there as well */
+.bm-overlay {
+    background-color: rgba(30, 30, 30, 0.85); /* Example for a slightly transparent black overlay */
+}
+
+/* When the menu is open, slide it to be fully visible */
+.menu-open .bm-menu-wrap {
+    transform: translateX(0);
+}
+
+/* Style for the menu items */
+.bm-item-list {
+    color: white; /* Example text color, adjust as needed */
+    padding: 0.5em;
+    /* Add more styling for your menu items here */
+}
+
+/* Adjustments for the toggle button */
+.burger-menu-toggle {
+    z-index: 1000; /* Ensure it's clickable by setting a high z-index */
+    position: absolute; /* Adjust based on your layout */
+    top: 1rem; /* Adjust the position as needed */
+    right: 1rem; /* Adjust the position as needed */
+}
+.bm-item-list .desktopMenuBtn:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+}
+.bm-item-list a:hover {
+    color: rgb(114, 165, 212); /* Same hover color as desktopMenuListItem */
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid rgb(114, 165, 212); /* Mimic hover effect from desktop */
+}
+
+    
+}

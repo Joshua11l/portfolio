@@ -1,0 +1,97 @@
+#intro {
+    height: calc(100vh - 4rem);
+    width: 100vw;
+    max-width: 75rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.introContent {
+    height: 75vh;
+    width: 100vw;
+    padding: 2rem;
+    font-size: 3rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg {
+    position: absolute;
+    top: -7rem;
+    right: 15%;
+    z-index: -1;
+    object-fit: cover;
+    height: 100vh;
+}
+
+.hello {
+    font-size: 1.75rem;
+    font-weight: 100;
+}
+
+.introName {
+    color: rgb(129, 183, 233);  
+}
+
+.introPara {
+    font-size: medium;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.contactBtn {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+}
+
+.contactBtn:hover {
+    background-color: rgb(114, 165, 212);
+    color: white;
+}
+/* ... existing styles ... */
+
+/* Adjustments for mobile devices */
+@media screen and (max-width: 480px) {
+    .bg {
+        right: -10vw; 
+        width: 110vw; 
+        height: 80vh;
+        background-size: cover; 
+        background-position: center; 
+        top: -40px;
+        overflow-x: hidden;
+    }
+    .introContent {
+        font-size: 6vw;
+        line-height: 1.4; 
+        padding-top: 90px; 
+        overflow-x: hidden;
+    }
+    .hello {
+        font-size: 6vw; 
+        margin-top: 100px; 
+        overflow-x: hidden;
+    }
+    /* Styles for the Contact Me button on mobile devices */
+    .contactBtn {
+        padding: 1rem 2rem; /* Smaller padding for a smaller button on mobile */
+        font-size: 0.9rem;
+        font-weight: 50rem; /* Smaller font size for the button text on mobile */
+        margin-top: 5px; /* Adjust margin-top as needed for mobile layout */
+        align-self: left
+        
+        ; /* Center the button on mobile devices if needed */
+        /* Add any additional styles you need for mobile here */
+    }
+}

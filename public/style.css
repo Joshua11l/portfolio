@@ -1,0 +1,18 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Set background image */
+body {
+    background-image: url('bgimg.jpg'); /* Replace 'bgimg.jpeg' with the correct path to your background image */
+    background-size: cover;
+    background-attachment: fixed; /* This keeps the background fixed while scrolling */
+    color: white;
+    overflow-x: auto;
+    overflow-y: auto;
+}
