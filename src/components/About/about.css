@@ -35,7 +35,7 @@
 
 
 .aboutDesc {
-    font-size: 1.2rem;
+    font-size: 1rem;
     max-width: 51rem;
     padding: 0 2rem;
     margin-bottom: 1.5rem;
@@ -67,6 +67,7 @@
 .aboutBar h2 {
     color: white;
     font-size: x-large;
+    margin-top: -1rem;
 }
 
 
@@ -118,7 +119,7 @@ h2 {
 }
 
 .projectImg {
-    width: 50%; /* Adjust based on your preference */
+    width: 40%; /* Adjust based on your preference */
     max-width: 100%; /* Ensures images are responsive */
     height: auto; /* Keeps the image aspect ratio */
     border-radius: 0.5rem; /* Optional: Adds rounded corners to images */
@@ -174,7 +175,7 @@ h2 {
     color: #000000;
     text-decoration: none;
     background-color: #ffffff;
-    padding: 0.5rem 1rem;
+    padding: .3rem 1rem;
     border-radius: 0.5rem;
     transition: background-color 0.3s ease;
     border: solid 3px black ;
@@ -190,7 +191,7 @@ h2 {
 .githubIcon {
     height: 3rem;
     width: 3.5rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
 }
 
 
